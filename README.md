@@ -9,7 +9,9 @@ In order to avoid using kernel driver in docker I used the windows executable wi
 
 ## How to use
 
-    docker run --rm -it -v $PWD/commands:/commands -e ILO_SERVER=<ip> -e ILO_USER=<user> -e ILO_PASSWORD="<password>" janosroden/hpqlocfg -f /commands/power_state.ribcl --xpath "string(//@HOST_POWER)"
+```bash
+docker run --rm -it -v $PWD/commands:/commands -e ILO_SERVER=<ip> -e ILO_USER=<user> -e ILO_PASSWORD="<password>" janosroden/hpqlocfg -f /commands/power_state.ribcl --xpath "string(//@HOST_POWER)"
+```
 
 ## Extra features
 
@@ -18,7 +20,7 @@ In order to avoid using kernel driver in docker I used the windows executable wi
 - You can use files which don't have `.xml` extension
 - You can use `--xpath <xpath>` to extract data
 
-## Exmaple usage
+## Example usage
 
 Derive from this image and replace the entrypoint with:
 
@@ -90,7 +92,7 @@ function _insertVirtualMedia {
       <INSERT_VIRTUAL_MEDIA DEVICE="$1" IMAGE_URL="$2" />
     </RIB_INFO>
   </LOGIN>
-</RIBCL>    
+</RIBCL>
 EOF
 }
 # params: <url>
